@@ -457,9 +457,6 @@ obj/structure/closet/crate
 	new /obj/item/pickaxe(src)
 	new /obj/item/grenade/frag/high_yield/homemade(src)
 	new /obj/item/grenade/frag/high_yield/homemade(src)
-	new /obj/item/grenade/frag/high_yield/homemade(src)
-	new /obj/item/grenade/frag/high_yield/homemade(src)
-	new /obj/item/grenade/frag/high_yield/homemade(src)
 
 /// END OF SPECIAL CRATE SECTION
 
@@ -488,8 +485,6 @@ obj/structure/closet/crate
 	icon_closed = "cargo1"
 
 /obj/structure/closet/crate/meat/New()
-	new /obj/item/reagent_containers/food/snacks/meat/rat_meat(src)
-	new /obj/item/reagent_containers/food/snacks/meat/rat_meat(src)
 	new /obj/item/reagent_containers/food/snacks/meat/rat_meat(src)
 	new /obj/item/reagent_containers/food/snacks/meat/grox(src)
 	new /obj/item/reagent_containers/food/snacks/meat/grox(src)

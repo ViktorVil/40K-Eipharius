@@ -77,7 +77,7 @@
 	vision_flags = SEE_TURFS
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	electric = 1
-	sales_price = 5
+	sales_price = 0
 
 /obj/item/clothing/glasses/science/magos
 	name = "magos goggles"
@@ -128,7 +128,7 @@
 	action_button_name = "Toggle Goggles"
 	toggleable = 1
 	electric = 1
-	sales_price = 5
+	sales_price = 0
 
 /obj/item/clothing/glasses/science/New()
 	..()
@@ -165,7 +165,7 @@
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	off_state = "blacksun"
 	electric = 1
-	sales_price = 40
+	sales_price = 20
 	flash_protection = FLASH_PROTECTION_MAJOR
 
 /obj/item/clothing/glasses/blacksun/skitarii
@@ -175,17 +175,21 @@
 	flash_protection = FLASH_PROTECTION_MAJOR
 
 /obj/item/clothing/glasses/tacgoggles
-	name = "tactical goggles"
-	desc = "Self-polarizing goggles with light amplification for dark environments. Made from durable synthetic."
-	icon_state = "swatgoggles"
+	name = "Prototype Photovisor"
+	desc = "Self-polarizing goggles with light amplification for dark environments. Manufactured by the Mechanicus."
+	icon_state = "night"
+	item_state = "glasses"
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 4)
-	darkness_view = 15
+	darkness_view = 40
 	action_button_name = "Toggle Goggles"
 	toggleable = 1
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
-	armor = list(melee = 20, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
-	siemens_coefficient = 0.6
+	off_state = "denight"
 	electric = 1
+	
+/obj/item/clothing/glasses/tacgoggles/New()
+	..()
+	overlay = GLOB.global_hud.meson
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
@@ -228,12 +232,12 @@
 	gender = NEUTER
 	icon_state = "material"
 	item_state = "glasses"
-	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
+	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	action_button_name = "Toggle Goggles"
 	toggleable = 1
 	vision_flags = SEE_OBJS
 	electric = 1
-	sales_price = 15
+	sales_price = 0
 
 /obj/item/clothing/glasses/regular
 	name = "prescription glasses"
@@ -419,7 +423,7 @@
 	icon_state = "thermal"
 	item_state = "glasses"
 	action_button_name = "Toggle Goggles"
-	origin_tech = list(TECH_MAGNET = 3)
+	origin_tech = list(TECH_MAGNET = 2)
 	toggleable = 1
 	vision_flags = SEE_MOBS
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
@@ -434,7 +438,7 @@
 	name = "optical meson scanner"
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
-	origin_tech = list(TECH_MAGNET = 3, TECH_ILLEGAL = 4)
+	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 
 /obj/item/clothing/glasses/thermal/plain
 	toggleable = 0
@@ -609,7 +613,7 @@
 	siemens_coefficient = 0.9
 	unacidable = 1
 	species_restricted = list(SPECIES_ASTARTES)
-	sales_price = 50
+	sales_price = 30
 	flash_protection =  FLASH_PROTECTION_MAJOR
 
 /obj/item/clothing/glasses/astartes/visor/apoth
@@ -625,7 +629,7 @@
 	siemens_coefficient = 0.9
 	unacidable = 1
 	species_restricted = list(SPECIES_ASTARTES)
-	sales_price = 60
+	sales_price = 40
 
 /obj/item/clothing/glasses/cadian
 	name = "Mark XIIc Visor"
@@ -636,7 +640,7 @@
 	item_state = "glasses"
 	body_parts_covered = EYES
 	unacidable = 1
-	sales_price = 40
+	sales_price = 30
 	flash_protection = FLASH_PROTECTION_MODERATE
 
 /obj/item/clothing/glasses/cadian/New()
@@ -655,7 +659,7 @@
 	siemens_coefficient = 0
 	flash_protection = FLASH_PROTECTION_MAJOR
 	unacidable = 1
-	sales_price = 40
+	sales_price = 20
 	var/view_range = 10 //They can see further normally
 	vision_flags = SEE_TURFS|SEE_MOBS|SEE_OBJS
 

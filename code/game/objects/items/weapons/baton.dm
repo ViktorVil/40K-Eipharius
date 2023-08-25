@@ -36,6 +36,17 @@
 	return ..()
 */
 
+/obj/item/melee/classic_baton/trench_club
+	name = "trench club"
+	desc = "A truncheon for beating other people in the same trench as you."
+	icon_state = "trench_club1"
+	item_state = "WU-club"
+	force = 25 //These things pack a punch.
+	block_chance = 25
+
+/obj/item/melee/classic_baton/trench_club/New()
+	..()
+	icon_state = "trench_club[rand(1,3)]"
 
 //Telescopic baton
 /obj/item/melee/telebaton
@@ -59,7 +70,7 @@
 		icon_state = "telebaton_1"
 		item_state = "nullrod"//was teletbaton_1 but guess what... that icon doesn't exist
 		w_class = ITEM_SIZE_NORMAL
-		force = 20//quite robust
+		force = 24//quite robust
 		attack_verb = list("smacked", "struck", "slapped")
 	else
 		user.visible_message("<span class='notice'>\The [user] collapses their telescopic baton.</span>",\

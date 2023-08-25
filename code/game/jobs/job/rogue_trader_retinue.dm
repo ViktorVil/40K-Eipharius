@@ -4,7 +4,7 @@
 	title = "Rogue Trader"
 	department = "Rogue Trader"
 	head_position = 1
-	department_flag = CIV
+	department_flag = SUP
 	social_class = SOCIAL_CLASS_MAX
 	total_positions = 1
 	spawn_positions = 1
@@ -26,13 +26,13 @@
 	shotgun_skill = 8
 	lmg_skill = 8
 	smg_skill = 8
-	cultist_chance = 100
+	cultist_chance = 40
 
 
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name
 		..()
-		H.fully_replace_character_name("Rogue Trader [current_name]")
+		H.fully_replace_character_name("[current_name]") // No title testing. 
 		H.add_stats(rand(14,18), rand(14,18), rand(14,18), rand(14,18))
 		H.add_skills(rand(6,10),rand(6,10),rand(5,6),rand(1,8),rand(1,8)) //melee, ranged, med, eng, surgery
 		H.warfare_language_shit(LANGUAGE_LOW_GOTHIC)
@@ -40,7 +40,6 @@
 		H.adjustStaminaLoss(-INFINITY)
 		H.witchblood()
 		H.warfare_faction = IMPERIUM
-		H.say(":v [title] reporting for duty!")
 		H.verbs += list(/mob/living/carbon/human/proc/hire)
 		to_chat(H, "<span class='notice'><b><font size=3>You are the Rogue Trader, taking residence upon this world to gain power and prestige. You have your mercenaries. Your Veteran and your Xeno. Buy and sell well in your Bazaar. Overthrow the Governorship with or without the heir if the opportunity presents itself.</font></b></span>")
 
@@ -53,12 +52,12 @@
 /datum/job/captain/get_access()
 	return get_all_station_access()
 
-/datum/job/vetmerc
-	title = "Veteran Mercenary"
-	department_flag = CIV
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "The Rogue Trader"
+/datum/job/janissary
+	title = "Vessorine Janissary"
+	department_flag = SUP
+	total_positions = 0 // Disabled for now.
+	spawn_positions = 0
+	supervisors = "the Rogue Trader"
 	selection_color = "#315dd4"
 	economic_modifier = 5
 	social_class = SOCIAL_CLASS_MED
@@ -67,38 +66,31 @@
 	minimal_access = list(access_bar, access_village, access_village, access_administratum, access_change_ids, access_keycard_auth,)
 	minimal_player_age = 3
 	ideal_character_age = 40
-	outfit_type = /decl/hierarchy/outfit/job/kasrkin
-	alt_titles = list(
-		"Veteran Kasrkin" = /decl/hierarchy/outfit/job/kasrkin,/*
-		"Tempestus Scion" = /decl/hierarchy/outfit/job/scion,*/
-
-		)
+	outfit_type = /decl/hierarchy/outfit/job/cargo/janissary
 	latejoin_at_spawnpoints = 1
-	auto_rifle_skill = 10 // veteran
-	semi_rifle_skill = 10
-	sniper_skill = 10
-	shotgun_skill = 10
-	lmg_skill = 10
-	smg_skill = 10
-	cultist_chance = 10
+	auto_rifle_skill = 8
+	semi_rifle_skill = 8
+	sniper_skill = 8
+	shotgun_skill = 8
+	lmg_skill = 8
+	smg_skill = 8
+	cultist_chance = 20
 
 	equip(var/mob/living/carbon/human/H)
 		var/current_name = H.real_name
 		..()
 		H.fully_replace_character_name("[current_name]")
-		H.add_stats(rand(18,20), rand(16,18), rand(18,19), rand(10,15))
-		H.add_skills(rand(10,12),rand(9,10),rand(3,5),5,rand(2,4)) //melee, ranged, med, eng, surgery
+		H.add_stats(rand(16,18), rand(16,18), rand(18,19), rand(10,13)) // Vessorine are the strongest, most formidable warriors in The Imperium. On the same level as Cadian Kasrkin.
+		H.add_skills(rand(13,14),rand(9,10),rand(3,5),5,rand(2,4)) //melee, ranged, med, eng, surgery
 		H.assign_random_quirk()
-		H.witchblood()
 		H.warfare_language_shit(LANGUAGE_LOW_GOTHIC)
 		H.warfare_language_shit(LANGUAGE_HIGH_GOTHIC)
-		H.adjustStaminaLoss(-INFINITY)
 		H.warfare_faction = IMPERIUM
-		to_chat(H, "<span class='notice'><b><font size=3>You are a Veteran Kasrkin. In service as a Mercenary to the Rogue Trader. Follow their word, and try not to be too racist against their Xeno Mercenary. (OOC: Abandoning the Rogue Trader's Bazaar and commanding the Guardsmen is against server rules. The RT pays your paycheck. Only listen to them)</font></b></span>")
+		to_chat(H, "<span class='notice'><b><font size=3>Three concepts hold primacy in Vessorine clan society to the exclusion of nearly all else: property, warcraft, and currency. The scarcity of resources and rocky landscape of Vessor made the ownership of arable land and grazing beasts one of the most important aspects of their primitive society. The populace grouped into clans for increased security and resources, and though the leader of a clan holds the title of Clansire, the term refers neither to patrilineal nor matrilineal descent. From an early age, typically after First Bonding, both male and female children begin training as janissaries. They undergo training to enhance their strength, stamina, and agility, sometimes doing so with only the food and water they can find in the wilderness. They also learn the three primary Vessorine battle arts: open-hand, blade, and gun lore. By the time they participate in their first contract, an ascension ritual called Second Bonding, they are formidable warriors equal to any in the Imperium. In preparation for Second Bonding, janissaries receive their first repatriation tattoo, which declares the bond a clan will pay for the return of their soldier if captured.</font></b></span>")
 
 /datum/job/xenomerc
 	title = "Xeno Mercenary"
-	department_flag = CIV
+	department_flag = SUP
 	social_class = SOCIAL_CLASS_MIN //these boys are gross
 	total_positions = 1
 	spawn_positions = 1
@@ -140,7 +132,7 @@ Mercenary System
 	if(src.stat == DEAD)
 		to_chat(src, "<span class='notice'>You can't choose a class when you're dead.</span>")
 		return
-
+	src.verbs -= list(/mob/living/carbon/human/proc/mercenaryclass)
 	var/fates = list("Kroot Shaper", "Ork Freeboota", /*"Eldar Corsair"*/)
 
 

@@ -29,7 +29,7 @@
 	force = 20
 	obj_flags =  OBJ_FLAG_CONDUCTIBLE
 	caliber = "shotgun"
-	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	handle_casings = HOLD_CASINGS
 	var/recentpump = 0 // to prevent spammage
@@ -40,11 +40,11 @@
 	wielded_item_state = "wshotgun"
 	gun_type = GUN_SHOTGUN
 	move_delay= 2.6
-	one_hand_penalty = 4
+	one_hand_penalty = 1.5
 	accuracy = 0.5
 	fire_delay= 3
 	armor_penetration = 1 //melee???
-	sales_price = 20
+	sales_price = 5
 
 /obj/item/gun/projectile/shotgun/pump/New()
 	..()
@@ -132,7 +132,7 @@
 
 
 /obj/item/gun/projectile/shotgun/doublebarrel
-	name = "\improper MS Doom"
+	name = "\improper Double Barrel Shotgun"
 	desc = "Two shots. That's all you'll ever need."
 	icon_state = "dshotgun"
 	item_state = "dshotgun"
@@ -143,12 +143,12 @@
 	force = 20
 	obj_flags =  OBJ_FLAG_CONDUCTIBLE
 	caliber = "shotgun"
-	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
+	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/shotgun
 	casingsound = 'sound/weapons/guns/misc/shotgun_fall.ogg'
 	wielded_item_state = "dshotgun1"
 	gun_type = GUN_SHOTGUN //ITS A SHOTGUN
-	one_hand_penalty = 3
+	one_hand_penalty = 1
 	burst_delay = 0
 	var/broke_open = FALSE
 	sales_price = 5
@@ -223,11 +223,12 @@
 
 /obj/item/gun/projectile/meltagun
 	name = "Melta Rifle"
-	desc = "Melta Guns are extremely dangerous weapons which can melt heavy armor in a few shots, this one is a melta rifle and should be used with both hands."
+	desc = "Melta Weapons are extremely dangerous weapons which can melt heavy armor in a few shots, this one is a melta rifle and should be used with both hands."
 	icon_state = "melta"
 	item_state = "multimelta"
 	wielded_item_state = "multimelta"
 	icon = 'icons/cadia-sprites/migrated2/gun_2.dmi'
+	fire_sound = 'sound/weapons/gunshot/lasgun1.ogg'
 	slot_flags = SLOT_BELT|SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/melta
 	caliber = "melta"
@@ -235,12 +236,17 @@
 	magazine_type = /obj/item/ammo_magazine/melta
 	allowed_magazines = /obj/item/ammo_magazine/melta
 	w_class = ITEM_SIZE_HUGE
-	force = 15 //ITS HEAVY
-	one_hand_penalty = 80 //who the fuck would try to use a meltagun with one hand?
-	block_chance = 2 //pretty big, could be used as a shield in theory considering how armored it is
+	force = 14
+	one_hand_penalty = 8
+	block_chance = 15 //pretty big, could be used as a shield in theory considering how armored it is
 	gun_type = GUN_SHOTGUN
 	move_delay = 8
-	accuracy = 3
-	fire_delay= 20
-	sales_price = 200 //even tho melta guns are common in the imperium, only one spawns per round as of now, with the max being of 3 per round
-
+	accuracy = 0
+	fire_delay= 40
+	sales_price = 50
+	burst = 20
+	
+	firemodes = list(
+		list(mode_name="OVERCHARGE", burst=15, fire_delay=40, burst_accuracy=null, dispersion=null, automatic = 0.5),
+		list(mode_name="STANDARD", burst=11, fire_delay=30, burst_accuracy=null, dispersion=null, automatic = 0.7),
+	)

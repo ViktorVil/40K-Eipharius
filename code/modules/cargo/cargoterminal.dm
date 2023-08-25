@@ -111,7 +111,7 @@
 		return TRUE
 
 	if(href_list["withdraw"])
-		var/withdrawamt = round(input(usr, "", "Withdraw thrones") as null|num)
+		var/withdrawamt = round(input(usr, "", "Withdraw money") as null|num)
 		if(withdrawamt > balance)
 			return FALSE
 		if(withdrawamt <= 0)
@@ -217,7 +217,6 @@
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN) //lets not spam
 		O.amount -= 1 //takes a shekel from the stack
 		GLOB.thrones += 10 //adds crowns to da counter
-		visible_message("[usr] deposits a $10 throne coin into the console.")
 		playsound(usr, 'sound/effects/coin_ins.ogg', 50, 0, -1)
 		O.update_icon() //so coins in hand update
 		return
@@ -225,7 +224,6 @@
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN) //lets not spam
 		O.amount -= 1 //takes a shekel from the stack
 		GLOB.thrones += 5 //adds crowns to da counter
-		visible_message("[usr] deposits a $5 throne coin into the console.")
 		playsound(usr, 'sound/effects/coin_ins.ogg', 50, 0, -1)
 		O.update_icon() //so coins in hand update
 		return
@@ -233,7 +231,6 @@
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN) //lets not spam
 		O.amount -= 1 //takes a shekel from the stack
 		GLOB.thrones += 1 //adds crowns to da counter
-		visible_message("[usr] deposits a $1 throne coin into the console.")
 		playsound(usr, 'sound/effects/coin_ins.ogg', 50, 0, -1)
 		O.update_icon() //so coins in hand update
 		return
@@ -258,9 +255,9 @@
 		return
 	user.set_machine(src)
 	var/dat = "<B>Imperial Tithe:</B><BR>"
-	dat += "[GLOB.thrones] throne balance<BR>"
+	dat += "[GLOB.thrones] Reál balance<BR>"
 	dat += "<B>Tithe owed to the Imperium</B></BR>"
-	dat += "<A href='byond://?src=\ref[src];tithe=1'>Imperial Tithe (350)</A><BR>"
+	dat += "<A href='byond://?src=\ref[src];tithe=1'>Imperial Tithe (150)</A><BR>"
 	dat += "<B>Set the tax rate:</B></BR>"
 	dat += "<A href='byond://?src=\ref[src];tax=1'>Set tax rate (default is 15%)</A><BR>"
 	dat += "May the Emperor guide and protect all trade. Praise the Immortal Emperor for his unending rule!<HR>"
@@ -274,20 +271,23 @@
 
 	if (usr.stat || usr.restrained()) return //Nope! We are either dead or restrained!
 	if (href_list["tithe"])
-		if(GLOB.thrones < 350) //do we got enough shekels?
+		if(GLOB.thrones < 150) //do we got enough shekels?
 			visible_message("You cannot afford that!")
 			return
 		else
 			visible_message("Thank you for your service to the Imperium, the Emperor protects!") //lil flavor text confirming
-			GLOB.thrones -= 350 //this goes here so it subtracts payment before the sleep, u cannot out spam me boy
+			GLOB.thrones -= 150 //this goes here so it subtracts payment before the sleep, u cannot out spam me boy
 			GLOB.tithe_paid = 1 //yay we paid the tithe
 			playsound(world, 'sound/effects/tithepaid.ogg', 90, 0, -1)
 
 	if (href_list["tax"])
-		var/taxrates = list("5", "10", "15", "20", "25", "30",) //lists tax rates, we'll do set ones for now
+		var/taxrates = list("1", "5", "10", "15",) //lists tax rates, we'll do set ones for now
 		var/taxchoice = input("Choose the tax rate", "Available rates") as null|anything in taxrates
 
 		switch(taxchoice)
+			if("1")
+				GLOB.tax_rate = 0.1
+				to_world("<span class='warning'>[usr] has set the tax rate to 1%!</span>")
 			if("5")
 				GLOB.tax_rate = 0.5
 				to_world("<span class='warning'>[usr] has set the tax rate to 5%!</span>")
@@ -297,15 +297,6 @@
 			if("15")
 				GLOB.tax_rate = 0.15
 				to_world("<span class='warning'>[usr] has set the tax rate to 15%!</span>")
-			if("20")
-				GLOB.tax_rate = 0.20
-				to_world("<span class='warning'>[usr] has set the tax rate to 20%!</span>")
-			if("25")
-				GLOB.tax_rate = 0.25
-				to_world("<span class='warning'>[usr] has set the tax rate to 25%!</span>")
-			if("30")
-				GLOB.tax_rate = 0.30
-				to_world("<span class='warning'>[usr] has set the tax rate to 30%!</span>")
 
 
 
@@ -362,7 +353,7 @@
 
 	user.set_machine(src)
 	var/dat = "<B>Imperial Bounties:</B><BR>"
-	dat += "[GLOB.thrones] throne balance<BR>"
+	dat += "[GLOB.thrones] Reál balance<BR>"
 	dat += "<B>Current Bounties</B></BR>"
 	dat += "Tau Rings (50/5):</BR>"
 	dat += "Kroot Tags (50/5):</BR>"
@@ -427,18 +418,18 @@
 		return
 	user.set_machine(src)
 	var/dat = "<B>Imperial Requisition:</B><BR>"
-	dat += "[GLOB.thrones] throne balance<BR>"
+	dat += "[GLOB.thrones] Reál balance<BR>"
 	dat += "<B>Thank you for your loyalty to the Imperium</B></BR>"
 	dat += "<B>Available units:</B></BR>"
 	dat += "<B>Common mercenaries</B><HR>"
 	dat += "Those are well trained soldiers. Not the best, but loyal. They are effective only in groups<HR>"
 	dat += "<A href='byond://?src=\ref[src];Whiteshield=1'>Purchase a Whiteshield (80)</A><BR>"
 	dat += "<A href='byond://?src=\ref[src];guardsman=1'>Purchase a Guardsman (150)</A><BR>"
-	dat += "<A href='byond://?src=\ref[src];medicae=1'>Purchase a Combat Medicae (225)</A><BR>"
-	dat += "<A href='byond://?src=\ref[src];specialist=1'>Purchase a Guard Specialist (250)</A><BR>"
+	dat += "<A href='byond://?src=\ref[src];medicae=1'>Purchase a Combat Medicae (205)</A><BR>"
+	dat += "<A href='byond://?src=\ref[src];specialist=1'>Purchase a Guard Specialist (200)</A><BR>"
 	dat += "<B>Elite mercenaries</B><HR>"
 	dat += "These are the best of the best. They are expensive, but very effective stand-alone units. You will not regret.<HR>"
-	dat += "<A href='byond://?src=\ref[src];janissary=1'>Purchase a Vessorine Janissary (300)</A><BR>"
+	dat += "<A href='byond://?src=\ref[src];janissary=1'>Purchase a Vessorine Janissary (200)</A><BR>"
 	dat += "<A href='byond://?src=\ref[src];unavailable=1'>Purchase a Ogryn (UNAVAILABLE) (450)</A><BR>"
 	dat += "<A href='byond://?src=\ref[src];unavailable=1'>Purchase a Psyker (UNAVAILABLE) (450)</A><BR>"
 	dat += "<A href='byond://?src=\ref[src];scion=1'>Purchase a Tempestus Scion (350)</A><BR>"
@@ -496,7 +487,7 @@
 					log_admin("A job slot for [job] has been opened by [key_name_admin(usr)] using mercenary hiring system")
 				return
 	if (href_list["medicae"])
-		if(GLOB.thrones < 225)
+		if(GLOB.thrones < 205)
 			visible_message("You cannot afford that!")
 			return
 		else
@@ -509,11 +500,11 @@
 				if(res == 1)
 					playsound(usr, 'sound/effects/beam.ogg', 50, 0, -1)
 					visible_message("[job] has been sent. He will arrive at your outpost as soon as he can.")
-					GLOB.thrones -= 225
+					GLOB.thrones -= 205
 					log_admin("A job slot for [job] has been opened by [key_name_admin(usr)] using mercenary hiring system")
 				return
 	if (href_list["specialist"])
-		if(GLOB.thrones < 250)
+		if(GLOB.thrones < 200)
 			visible_message("You cannot afford that!")
 			return
 		else
@@ -526,11 +517,11 @@
 				if(res == 1)
 					playsound(usr, 'sound/effects/beam.ogg', 50, 0, -1)
 					visible_message("[job] has been sent. He will arrive at your outpost as soon as he can.")
-					GLOB.thrones -= 250
+					GLOB.thrones -= 200
 					log_admin("A job slot for [job] has been opened by [key_name_admin(usr)] using mercenary hiring system")
 				return
 	if (href_list["janissary"])
-		if(GLOB.thrones < 300)
+		if(GLOB.thrones < 200)
 			visible_message("You cannot afford that!")
 			return
 		else
@@ -543,7 +534,7 @@
 				if(res == 1)
 					playsound(usr, 'sound/effects/beam.ogg', 50, 0, -1)
 					visible_message("[job] has been sent. He will arrive at your outpost as soon as he can.")
-					GLOB.thrones -= 300
+					GLOB.thrones -= 200
 					log_admin("A job slot for [job] has been opened by [key_name_admin(usr)] using mercenary hiring system")
 				return
 	if (href_list["scion"])

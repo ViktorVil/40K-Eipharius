@@ -7,6 +7,31 @@ GLOBAL_LIST_EMPTY(red_captured_zones) // = list()
 GLOBAL_LIST_EMPTY(mortar_areas) // = list()
 
 
+
+
+/area/cadiaoutpost/new_hive/hive_city
+	name = "Hive City"
+	icon_state = "village"
+	music = 'sound/newmusic/General_Ambient2.ogg'
+	requires_power = FALSE
+	dynamic_lighting = 1
+
+/area/cadiaoutpost/new_hive/caves
+	name = "Hive Depths" // Regular caves - little to no danger. Soft ambience.
+	icon_state = "cave"
+	music = 'sound/newmusic/General_Ambient2.ogg'
+	var/instability = 0
+
+
+
+
+
+
+
+
+
+///////
+
 /area/constructionsite
 	name = "\improper Construction Site"
 	icon_state = "storage"
@@ -337,7 +362,7 @@ Area basic template
 /area/cadiaoutpost/oa/arrivals
 	name = "Arrivals"
 	icon_state = "cryo"
-	requires_power = TRUE
+	requires_power = FALSE
 //////////////////////////////////////
 ////////////Hallways//////////////////
 //////////////////////////////////////
@@ -345,13 +370,13 @@ Area basic template
 /area/cadiaoutpost/oa/bridge/hallway
 	name = "Spire Hallway"
 	icon_state = "blueold"
-	requires_power = TRUE
+	requires_power = FALSE
 	music = 'sound/newmusic/Outpost1.ogg'
 
 /area/cadiaoutpost/oa/departures
 	name = "Departures"
 	icon_state = "escape"
-	requires_power = TRUE
+	requires_power = FALSE
 	music = 'sound/newmusic/Outpost1.ogg'
 
 /area/cadiaoutpost/oa/hallway
@@ -437,27 +462,28 @@ Area basic template
 	name = "Warden"
 	icon_state = "warden"
 	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/security/customs
 	name = "customs"
+	music = 'sound/newmusic/Outpost1.ogg'
 	icon_state = "customs"
 
 /area/cadiaoutpost/oa/security/firing_range
 	name = "Firing Range"
 	icon_state = "firingrange"
 	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/security/execution
 	name = "Execution Room"
 	icon_state = "execution_room"
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/security/execution/education
 	name = "Prisoner Education"
 	icon_state = "execution_room"
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/security/execution/transfer
 	name = ""
@@ -467,14 +493,8 @@ Area basic template
 ///////////////Head's Offices/////////////
 //////////////////////////////////////////
 
-/area/cadiaoutpost/oa/bridge/offices/roguetrader
-	name = "Rogue Trader's Office"
-	icon_state = "captain"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = FALSE
-
-/area/cadiaoutpost/oa/bridge/offices/seneschal
-	name = "Seneschal's Office"
+/area/cadiaoutpost/oa/bridge/offices/heir
+	name = "Heir's Room"
 	icon_state = "hop"
 	music = 'sound/newmusic/Outpost1.ogg'
 	requires_power = FALSE
@@ -500,8 +520,18 @@ Area basic template
 /area/cadiaoutpost/oa/bridge/offices/sisterhospitaller
 	name = "Sister Hospitaller's Office"
 	icon_state = "cmo"
-	music = 'sound/newmusic/Outpost1.ogg'
+	music = 'sound/newmusic/Chapel1.ogg'
 	requires_power = FALSE
+
+/area/cadiaoutpost/oa/bridge/offices/sistersuperior
+	name = "Sister Superior"
+	icon_state = "sistersup"
+	music = 'sound/newmusic/Chapel1.ogg'
+
+/area/cadiaoutpost/oa/bridge/offices/planetarygovernor
+	name = "Planetary Governor"
+	icon_state = "captain"
+	music = 'sound/newmusic/Outpost1.ogg'
 
 ////////////////////////
 ////////Misc (temp)/////
@@ -560,7 +590,6 @@ Area basic template
 	name = "Sacrarium Machina"
 	icon_state = "engine"
 	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = FALSE
 
 /area/cadiaoutpost/oa/engineering/engistorage
 	name = "Engineering Storage"
@@ -571,7 +600,6 @@ Area basic template
 	name = "Engineering Foyer"
 	icon_state = "engineering_foyer"
 	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = FALSE
 
 /area/cadiaoutpost/oa/engineering/engine/enginewaste
 	name = "Engine Waste"
@@ -581,43 +609,36 @@ Area basic template
 	name = "Engine Smes"
 	icon_state = "engine_smes"
 	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = FALSE
 
 /area/cadiaoutpost/oa/engineering/engineeringbreak
 	name = "Engineering Breakroom"
 	icon_state = "engineering_break"
 	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = FALSE
 
 /area/cadiaoutpost/oa/engineering/atmospherics
 	name = "Atmospherics"
 	icon_state = "atmos"
-	requires_power = FALSE
 
 /area/cadiaoutpost/oa/engineering/atmospherics/atmosmonitoring
 	name = "Atmos Monitoring"
 	icon_state = "atmos_monitoring"
-	requires_power = TRUE
 
 /area/cadiaoutpost/oa/engineering/atmospherics/atmosstorage
 	name = "Atmos Storage"
 	icon_state = "atmos_storage"
-	requires_power = TRUE
 
 /area/cadiaoutpost/oa/engineering/Gravity
 	name = "Gravity Generator"
 	icon_state = "gravgen"
-	requires_power = TRUE
 
 /area/cadiaoutpost/oa/engineering/drone
 	name = "Drone Zone"
 	icon_state = "drone_fab"
-	requires_power = TRUE
 
 /area/cadiaoutpost/oa/engineering/solars
 	name = "Solars"
 	icon_state = "solars"
-	requires_power = TRUE
+
 //////////////////////////////////////
 //////////////Medical////////////////
 /////////////////////////////////////
@@ -628,17 +649,43 @@ Area basic template
 	dynamic_lighting = 1
 	requires_power = FALSE
 
+/area/cadiaoutpost/oa/medicae/mansion
+	name = "Mansion Medical"
+	icon_state = "medbay"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/medicae/mansion/medicae
+	name = "Mansion Medicae"
+	icon_state = "mansionmed"
+	dynamic_lighting = 1
+	requires_power = FALSE
+
 /area/cadiaoutpost/oa/medicae/storage
 	name = "Medicae Storage"
 	icon_state = "medbay2"
 	music = 'sound/newmusic/Outpost1.ogg'
 	requires_power = FALSE
 
+/area/cadiaoutpost/oa/medicae/mansion/storage
+	name = "Mansion Medicae Storage"
+	icon_state = "mansionmedstorage"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/medicae/mansion/surgery
+	name = "Mansion Surgery"
+	icon_state = "mansionsurgery"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/medicae/mansion/chem
+	name = "Mansion Chemistry"
+	icon_state = "mansionchem"
+	requires_power = FALSE
+
 /area/cadiaoutpost/oa/medicae/virology
 	name = "Praetorium Aegrotatio"
 	icon_state = "virology"
 	music = 'sound/newmusic/Lab_Experiment.ogg'
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/medicae/chem
 	name = "Chemistry"
@@ -720,26 +767,27 @@ Area basic template
 	name = "Sanctum Biologis"
 	icon_state = "green"
 	music = 'sound/newmusic/Outpost1.ogg'
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/research/toxins
 	name = "Toxins"
 	icon_state = "toxins"
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/research/toxins/toxinlab
 	name = "toxin lab"
 	icon_state = "toxlab"
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/research/toxins/toxintest
 	name = "Toxin Test"
 	icon_state = "toxtest"
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/research/toxins/toxinstorage
 	name = "Toxin Storage"
 	icon_state = "toxstorage"
-	requires_power = TRUE
+	requires_power = FALSE
 
 /////////////////////////////////////
 /////////////Service/////////////////
@@ -748,7 +796,7 @@ Area basic template
 /area/cadiaoutpost/oa/service
 	name = "service"
 	icon_state = "grey"
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/service/bar
 	name = "The Maltese Falcon"
@@ -771,7 +819,7 @@ Area basic template
 /area/cadiaoutpost/oa/service/janitor
 	name = "Janitor"
 	icon_state = "janitor"
-	requires_power = TRUE
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/service/theatre
 	name = "Theatre"
@@ -802,53 +850,58 @@ Area basic template
 /////////////////////////////////////////
 //////////////////Supply////////////////
 ////////////////////////////////////////
+
+/area/cadiaoutpost/oa/supply/offices/roguetrader
+	name = "Rogue Trader's Office"
+	icon_state = "rt"
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
+
 /area/cadiaoutpost/oa/supply
 	name = "Supply"
 	icon_state = "brown"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/supply/cargo
 	name = "Cargo"
 	icon_state = "cargo"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/supply/cargo/quartoffice
 	name = "Quartermaster office"
 	icon_state = "quartoffice"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
-
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
 /area/cadiaoutpost/oa/supply/cargo/warehouse
 	name = "Warehouse"
 	icon_state = "warehouse"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/supply/cargo/office
 	name = "Cargo Office"
 	icon_state = "cargo_office"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
-
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
 /area/cadiaoutpost/oa/supply/cargo/mailroom
 	name = "Mail Room"
 	icon_state = "mailroom"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/supply/cargo/lobby
 	name = "Cargo Lobby"
 	icon_state = "cargo_lobby"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/supply/cargo/cargobreak
 	name = "Cargo Breakroom"
 	icon_state = "cargo_break"
-	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	music = 'sound/newmusic/Hab.ogg'
+	requires_power = FALSE
 
 /area/cadiaoutpost/oa/supply/disposal
 	name = "Disposal"
@@ -858,14 +911,14 @@ Area basic template
 	name = "Farm"
 	icon_state = "farm"
 	music = 'sound/newmusic/General_Ambient2.ogg'
-	requires_power = TRUE
+	requires_power = FALSE
 	dynamic_lighting = 1
 
 /area/cadiaoutpost/oa/groxpen
 	name = "groxpen"
 	icon_state = "farm"
 	music = 'sound/newmusic/General_Ambient2.ogg'
-	requires_power = TRUE
+	requires_power = FALSE
 	dynamic_lighting = 1
 
 /area/cadiaoutpost/oa/tradefloor
@@ -896,7 +949,7 @@ Area basic template
 /area/cadiaoutpost/oa/supply/mining/miningproduction
 	name = "Mining Production"
 	icon_state = "mining_production"
-	requires_power = TRUE
+	requires_power = FALSE
 	music = 'sound/newmusic/General_Ambient2.ogg'
 
 /area/cadiaoutpost/oa/supply/mining/office
@@ -907,7 +960,7 @@ Area basic template
 /area/cadiaoutpost/oa/supply/mining/miningbreak
 	name = "Mining Breakroom"
 	icon_state = "mining_break"
-	requires_power = TRUE
+	requires_power = FALSE
 	music = 'sound/newmusic/General_Ambient2.ogg'
 
 /area/cadiaoutpost/oa/supply/mining/explored
@@ -979,6 +1032,7 @@ Area basic template
 /area/cadiaoutpost/oa/service/inn
 	name = "Village Inn"
 	icon_state = "inn"
+	music = 'sound/newmusic/Inn_Ambient.ogg'
 	dynamic_lighting = 1
 	requires_power = FALSE
 
@@ -1009,11 +1063,71 @@ Area basic template
 	music = 'sound/newmusic/Chapel1.ogg'
 	requires_power = FALSE
 
+	var/consecrated = FALSE
+
 /area/cadiaoutpost/oa/service/chapel/chapeloffice
 	name = "Chapel Office"
 	icon_state = "chapeloffice"
-	music = 'sound/newmusic/Chapel1.ogg'
 	requires_power = FALSE
+
+/area/cadiaoutpost/oa/service/chapel/chapeldorm
+	name = " Chapel Dorms"
+	icon_state = "chapeldorm"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/service/chapel/chapelsurgery
+	name = "Chapel Surgery"
+	icon_state = "chapelsurgery"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/service/chapel/chapelchemistry
+	name = "Chapel Chemistry"
+	icon_state = "chapelchem"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/service/chapel/recovery
+	name = "Chapel Recovery"
+	icon_state = "chapelrecovery"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/service/chapel/armory
+	name = "Chapel Armory"
+	icon_state = "chapelarmory"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/service/chapel/vault
+	name = "Chapel Vault"
+	icon_state = "chapelvault"
+	requires_power = FALSE
+
+
+
+/area/cadiaoutpost/oa/service/chapel/Entered(mob/living/carbon/L, atom/A)
+	. = ..()
+	if(src.consecrated == TRUE)
+		if(L.faction != "Chaos")
+			if(prob(5))
+				to_chat(L, "<span class='flick-holy'>+ I can feel His presence here... +</span>")
+				L.happiness += 3
+		else
+			L.flash_weakest_pain()
+			to_chat(L, "<span class='horror-text'>+ I can feel His presence here... +</span> ")
+			L.happiness -= 3
+			sleep(3 SECONDS)
+			//not going to be fun if they stay
+			L.danger_timer = addtimer(CALLBACK(L, /mob/living/carbon/human/.proc/overstayed), 35 SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)
+			to_chat(L, "<span class='horror-text'>+ I HAVE TO GET OUT OF HERE +</span> ")
+
+
+
+
+
+/area/cadiaoutpost/oa/service/chapel/Exited(mob/living/L, area/A)
+	. = ..()
+	if(src.consecrated == TRUE)
+		if(L.faction == "Chaos")
+			deltimer(L.danger_timer) //if they leave in time the timer will go away
+
 
 /area/cadiaoutpost/oa/maintenance/department/service/chapel
 	name = "Chapel Maintenance"
@@ -1024,6 +1138,15 @@ Area basic template
 	name = "Monastery Maintenance"
 	music = 'sound/newmusic/Chapel1.ogg'
 	icon_state = "maint_monastery"
+
+/area/cadiaoutpost/oa/service/chapel/graveyard
+	name = "Graveyard"
+	icon_state = "graveyard"
+	requires_power = FALSE
+
+/area/cadiaoutpost/oa/village/pathfinder
+	name = "Pathfinder's Abode"
+	icon_state = "pathfinder"
 
 ////////////////////////////////////////
 //////////FOREST//////////////////
@@ -1134,11 +1257,13 @@ Area basic template
 	name = "engineering Maintenance"
 	icon_state = "maint_engineering"
 	music = 'sound/newmusic/Outpost1.ogg'
+	requires_power = TRUE
 
 /area/cadiaoutpost/oa/maintenance/department/engineering/electrical
 	name = "Electrical Maintenance"
 	icon_state = "maint_electrical"
 	music = 'sound/newmusic/Outpost1.ogg'
+	requires_power = TRUE
 
 /area/cadiaoutpost/oa/maintenance/department/engineering/engine
 	name = "Engine Maintenance"
@@ -1349,7 +1474,7 @@ Area basic template
 	name = "Vault"
 	icon_state = "vault"
 	music = 'sound/newmusic/Outpost1.ogg'
-	requires_power = TRUE
+	requires_power = FALSE
 
 ///////////////////////////
 /////////Antagonists////////
@@ -1504,8 +1629,6 @@ Area basic template
 	icon_state = "shuttle"
 	music = 'sound/newmusic/Lab_Experiment.ogg'
 	requires_power = 0
-
-
 
 /area/cadiaoutpost/oa/shuttle/tau1
 	name = "Tau Ship"

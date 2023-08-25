@@ -3,12 +3,12 @@
 	desc = "The NT Mk60 EW Halicon is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. Not the best of its type."
 	icon_state = "ionrifle"
 	item_state = "ionrifle"
-	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
+	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 2)
 	w_class = ITEM_SIZE_HUGE
 	force = 10
 	obj_flags =  OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
-	one_hand_penalty = 4
+	one_hand_penalty = 2
 	charge_cost = 30
 	max_shots = 10
 	projectile_type = /obj/item/projectile/ion
@@ -23,7 +23,7 @@
 	desc = "The NT Mk72 EW Preston is a personal defense weapon designed to disable mechanical threats."
 	icon_state = "ionpistol"
 	item_state = "ionpistol"
-	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
+	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 2)
 	w_class = ITEM_SIZE_NORMAL
 	force = 5
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
@@ -36,7 +36,7 @@
 	name = "mind flayer"
 	desc = "A custom-built weapon of some kind."
 	icon_state = "xray"
-	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 4)
+	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4)
 	projectile_type = /obj/item/projectile/beam/mindflayer
 
 
@@ -100,34 +100,34 @@ obj/item/gun/energy/staff/focus
 			projectile_type = /obj/item/projectile/forcebolt"
 	*/
 
-//OP SHIT, DO NOT MAKE CRAFTABLE
+
 /obj/item/gun/energy/phosphor
 	name = "Phosphor Blast Pistol"
-	desc = "A rare and dangerous weapon, favoured by Tech Priests and Skitarii Alphas, this weapon is supposed to deliver the killing blow by putting the target on fire until they melt to death, it is also known to cause fires and be incredibly toxic to any biological matter."
+	desc = "A rare and dangerous weapon, used by powerful Magi and Old Skitarii Alphas, this weapon is supposed to deliver the killing blow by burning it's target to death, however, despite it's ability to pass through heavy armor easily, it has a short range."
 	icon = 'icons/obj/weapons/gun/energy.dmi'
 	icon_state = "teslar"
 	item_state = "teslar"
 	slot_flags = SLOT_BACK|SLOT_BELT
 	force = 8
+	str_requirement = 15 //kinda heavy due to it's giant cell.
 	max_shots = 5 //not lore accurate, but this is better.
 	w_class = ITEM_SIZE_NORMAL
-	one_hand_penalty= 1
 	burst_delay = 2
-	move_delay = 2
-	fire_delay = 8 // it kills in 2 shots due to pain, it needs atleast a minor delay
+	move_delay = 1 //its a small as fuck pistol, it may be poisonous but its small.
+	fire_delay = 8
 	charge_cost = 300
-	cell_type = /obj/item/cell/lasgun // lasgun cell makes more sense
-	ammoType = /obj/item/cell/lasgun
+	cell_type = /obj/item/cell/plasma
+	ammoType = /obj/item/cell/plasma
 	projectile_type = 	/obj/item/projectile/energy/phosphor
 	self_recharge = 1
 
-//MODIFIED gauss rifle cause of the sprite, that way no one gets confused.
+
 /obj/item/gun/energy/gauss
 	name = "Gauss Rifle"
 	desc = "A deadly weapon wielded by Necron Warriors"
 	icon_state = "ns"
 	item_state = "ns"
-	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
+	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6)
 	w_class = ITEM_SIZE_NORMAL
 	force = 5
 	slot_flags = SLOT_BELT|SLOT_BACK
@@ -137,7 +137,7 @@ obj/item/gun/energy/staff/focus
 	projectile_type = /obj/item/projectile/gauss
 	self_recharge = 1
 	charge_meter = FALSE
-	
+
 /obj/item/gun/energy/WarpLens
 	name = "Warp Lens"
 	desc = "A lens used to direct bolts of warp energy"

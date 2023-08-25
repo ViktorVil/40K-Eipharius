@@ -9,11 +9,11 @@
 	BACKPACK_OVERRIDE_MEDICAL
 
 /decl/hierarchy/outfit/job/medical/cmo
-	name = OUTFIT_JOB_NAME("Sister Superior")
+	name = OUTFIT_JOB_NAME("Abbess")
 	l_ear  = /obj/item/device/radio/headset/heads/cmo
 	uniform = /obj/item/clothing/under/rank/medical
 	neck = /obj/item/reagent_containers/food/drinks/canteen
-	suit = /obj/item/clothing/suit/storage/sistersuperiorsuit
+	suit = /obj/item/clothing/suit/sisterofbattle/mlsister
 	back = /obj/item/storage/backpack/satchel/warfare
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_hand = /obj/item/storage/firstaid/adv
@@ -23,6 +23,7 @@
 	r_pocket = /obj/item/device/flashlight/lantern
 	id_type = null
 	head = /obj/item/clothing/head/hospitallerhelm
+	r_pocket = /obj/item/storage/box/coin
 	backpack_contents = list(
 		/obj/item/reagent_containers/food/snacks/warfare/rat = 1,
 		/obj/item/ammo_magazine/bolt_pistol_magazine = 2,
@@ -33,23 +34,23 @@
 /decl/hierarchy/outfit/job/medical/doctor
 	name = OUTFIT_JOB_NAME("Sister Hospitallar")
 	uniform = /obj/item/clothing/under/rank/medical
-	l_ear  = /obj/item/device/radio/headset/headset_sci
+	l_ear  = /obj/item/device/radio/headset/heads/cmo
 	neck = /obj/item/reagent_containers/food/drinks/canteen
 	suit = /obj/item/clothing/suit/storage/sistersuperiorsuit
 	back = /obj/item/storage/backpack/satchel/warfare
 	shoes = /obj/item/clothing/shoes/jackboots
 	glasses = /obj/item/clothing/glasses/hud/health
 	l_hand = /obj/item/storage/firstaid/adv
+	r_hand = /obj/item/gun/projectile/bolter_pistol/sisterofbattle
 	belt = /obj/item/storage/belt/medical/full
 	r_pocket = /obj/item/device/flashlight/lantern
 	id_type = /obj/item/card/id/medical
 	head = /obj/item/clothing/head/hospitallerhelm
+	r_pocket = /obj/item/storage/box/coin
 	backpack_contents = list(
 		/obj/item/reagent_containers/food/snacks/warfare/rat = 1,
-		/obj/item/stack/thrones = 1,
-		/obj/item/stack/thrones2 = 1,
-		/obj/item/gun/energy/las/laspistol = 1,
-		/obj/item/cell/lasgun = 2,
+		/obj/item/ammo_magazine/bolt_pistol_magazine = 1,
+		/obj/item/stack/thrones2/five = 1,
 		/obj/item/stack/thrones3/five = 1,)
 /* // sisterhood chemist
 /decl/hierarchy/outfit/job/medical/chemist
@@ -87,6 +88,7 @@
 	shoes = /obj/item/clothing/shoes/jackboots/techpriest
 	l_ear = /obj/item/device/radio/headset/headset_eng
 	l_hand = /decl/hierarchy/supply_pack/security/forensics
+	r_pocket = /obj/item/storage/box/coin
 	r_ear = null
 	back = /obj/item/storage/backpack/satchel/warfare/techpriest/biologis
 	backpack_contents = list(

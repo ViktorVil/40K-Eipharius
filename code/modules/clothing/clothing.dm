@@ -154,7 +154,7 @@
 		icon = sprite_sheets_obj[target_species]
 	else
 		icon = initial(icon)
-/*
+
 /obj/item/clothing/get_examine_line()
 	. = ..()
 	var/list/ties = list()
@@ -165,7 +165,7 @@
 		.+= " with [english_list(ties)] attached"
 	if(accessories.len > ties.len)
 		.+= ". <a href='?src=\ref[src];list_ungabunga=1'>\[See accessories\]</a>"
-*/
+
 /obj/item/clothing/CanUseTopic(var/user)
 	if(user in view(get_turf(src)))
 		return STATUS_INTERACTIVE
@@ -640,6 +640,10 @@ BLIND     // can't see anything
 	grab_sound = 'sound/items/handle/clothing_up.ogg'
 	equipsound = 'sound/items/handle/cloth_pickup.ogg'
 	sales_price = 0
+
+/obj/item/clothing/suit/New()
+	..()
+	slowdown_per_slot[slot_wear_suit] = 0.4
 
 
 /obj/item/clothing/suit/update_clothing_icon()

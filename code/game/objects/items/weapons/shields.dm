@@ -62,10 +62,10 @@
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
 	icon = 'icons/obj/weapons/melee/misc.dmi'
 	icon_state = "riot"
-	base_block_chance = 70
+	base_block_chance = 35
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
-	force = 5.0
+	force = 9.0
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 4
@@ -124,7 +124,7 @@
 	slot_flags = SLOT_BACK
 	force = 18
 	throwforce = 10
-	base_block_chance = 40
+	base_block_chance = 30
 	throw_speed = 10
 	throw_range = 20
 	w_class = ITEM_SIZE_HUGE
@@ -156,7 +156,7 @@
 	throw_speed = 1
 	throw_range = 4
 	w_class = ITEM_SIZE_SMALL
-	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
+	origin_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 5, TECH_ILLEGAL = 5)
 	attack_verb = list("shoved", "bashed")
 	var/active = 0
 

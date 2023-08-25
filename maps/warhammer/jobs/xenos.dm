@@ -21,6 +21,7 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	neck = /obj/item/reagent_containers/food/drinks/canteen
 	back = /obj/item/storage/backpack/satchel/warfare
+	r_ear = /obj/item/device/radio/headset/red_team
 	l_ear = /obj/item/device/radio/headset/blue_team/all
 	belt = /obj/item/device/flashlight/lantern
 	l_pocket = /obj/item/storage/box/ifak
@@ -30,6 +31,7 @@
 
 //Genestealer
 /decl/hierarchy/outfit/job/genestealer //really just for walking sounds
+	name = OUTFIT_JOB_NAME("Genestealer")
 	uniform = null
 	head = /obj/item/clothing/head/helmet/genestealer
 	suit = /obj/item/clothing/suit/storage/hooded/genestealer
@@ -38,7 +40,41 @@
 	neck = null
 	back = null
 	l_ear = /obj/item/device/radio/headset/hivemind
-	l_hand = /obj/item/melee/baton/nidstun
+	l_hand = /obj/item/melee/powermaul/nidstun
+	belt = null
+	l_pocket = null
+	id = null
+	id_slot = null
+	pda_slot = null
+
+/decl/hierarchy/outfit/job/genestealer/tough
+	name = OUTFIT_JOB_NAME("Genestealer Tough")
+	uniform = null
+	head = /obj/item/clothing/head/helmet/genestealer/tough
+	suit = /obj/item/clothing/suit/storage/hooded/genestealer/tough
+	shoes = /obj/item/clothing/shoes/genestealerfeet
+	glasses = /obj/item/clothing/glasses/tyranid
+	neck = null
+	back = null
+	l_ear = /obj/item/device/radio/headset/hivemind
+	l_hand = /obj/item/melee/powermaul/nidstun
+	belt = null
+	l_pocket = null
+	id = null
+	id_slot = null
+	pda_slot = null
+
+/decl/hierarchy/outfit/job/genestealer/epic
+	name = OUTFIT_JOB_NAME("Genestealer Epic")
+	uniform = null
+	head = /obj/item/clothing/head/helmet/genestealer/epic
+	suit = /obj/item/clothing/suit/storage/hooded/genestealer/epic
+	shoes = /obj/item/clothing/shoes/genestealerfeet
+	glasses = /obj/item/clothing/glasses/tyranid
+	neck = null
+	back = null
+	l_ear = /obj/item/device/radio/headset/hivemind
+	l_hand = /obj/item/melee/powermaul/nidstun
 	belt = null
 	l_pocket = null
 	id = null

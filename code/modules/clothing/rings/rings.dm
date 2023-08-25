@@ -43,7 +43,7 @@
 
 /obj/item/clothing/ring/reagent
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
-	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
+	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
 
 /obj/item/clothing/ring/reagent/New()
 	..()
@@ -66,11 +66,26 @@
 	name = "silver ring"
 	desc = "A ring made from what appears to be silver."
 	icon_state = "material"
-	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
+	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
 
 /obj/item/clothing/ring/reagent/sleepy/New()
 	..()
 	reagents.add_reagent(/datum/reagent/chloralhydrate, 15) // Less than a sleepy-pen, but still enough to knock someone out
+
+/obj/item/clothing/ring/reagent/sleepy/nid
+	name = "nid stinger"
+	desc = "A disgusting stinger covered in venom."
+	color = "#292929"
+	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
+
+/obj/item/clothing/ring/reagent/sleepy/nid/New()
+	..()
+	reagents.add_reagent(/datum/reagent/chloralhydrate, 15)
+
+
+/obj/item/clothing/ring/reagent/sleepy/nid/dropped() //since nodrop is fucked this will deal with it for now.
+	..()
+	spawn(1) if(src) qdel(src)
 
 /////////////////////////////////////////
 //Seals and Signet Rings

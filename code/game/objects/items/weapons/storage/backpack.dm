@@ -232,7 +232,7 @@
 	icon_state = "sister"
 	item_state = "sister"
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
-	canremove = 0
+	canremove = 1
 
 /obj/item/storage/backpack/satchel/warfare/sisterofbattle/mlsister
 	name = "Order of Our Martyred Lady Powerpack"
@@ -240,7 +240,7 @@
 	icon_state = "mlsister"
 	item_state = "mlsister"
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
-	canremove = 0
+	canremove = 1
 
 
 /obj/item/storage/backpack/satchel/warfare/sisterofbattle/brsister
@@ -249,7 +249,7 @@
 	icon_state = "brsister"
 	item_state = "brsister"
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
-	canremove = 0
+	canremove = 1
 
 /obj/item/storage/backpack/satchel/astartes
 	name = "Astartes Mark VII Powerpack"
@@ -257,7 +257,7 @@
 	item_icons = list(slot_back_str = 'icons/mob/32x40/storage.dmi')
 	icon_state = "ultrapack"
 	item_state = "ultrapack"
-	canremove = 0
+	canremove = 1
 	max_storage_space = DEFAULT_BACKPACK_STORAGE //backpack storage with satchel access.
 
 /obj/item/storage/backpack/satchel/astartes/ultramarine
@@ -449,6 +449,11 @@
 	desc = "Field ready kit, tried and tested through countless encounters."
 	icon_state = "kriegpack"
 	item_state = "kriegpack"
+
+/obj/item/storage/backpack/satchel/krieger/grenadier
+	desc = "An assembled kit for air filtration, weapon power supply, and basic storage. Perfect to bring with you into no man's land."
+	icon_state = "grenpack"
+	item_state = "grenpack"
 
 /obj/item/storage/backpack/satchel/grey
 	name = "grey satchel"

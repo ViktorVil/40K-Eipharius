@@ -127,7 +127,7 @@
 	name = "brown trenchcoat"
 	desc = "A rugged canvas trenchcoat, designed and created by TX Fabrication Corp. The coat is externally impact resistant - perfect for your next act of autodefenestration!"
 	icon_state = "detective"
-	//item_state = "det_suit"
+	item_state = "detective"
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|ARMS
@@ -475,13 +475,14 @@
 /obj/item/clothing/suit/armor/vest/leather/tailcoat/ladycoat
 	name = "lady coat"
 	desc = "Fancy lady coat."
-	icon_state = "ladiescoat"
-	item_state = "ladiescoat"
+	icon = 'icons/mob/onmob/suit.dmi'
+	icon_state = "tailcoatgirlblack"
+	item_state = "tailcoatgirlblack"
 	armor = list(MELEE = 15, BULLET = 10, LASER = 5, ENERGY = 5, BOMB = 15, BIO = 0, FIRE = 10, ACID = 5)
 
 /obj/item/clothing/suit/armor/vest/leather/tailcoat/ladycoat/red
-	icon_state = "ladiesredcoat"
-	item_state = "ladiesredcoat"
+	icon_state = "tailcoatladiesred"
+	item_state = "tailcoatladiesred"
 
 /obj/item/clothing/suit/armor/vest/leather/tailcoat/black
 	icon_state = "tailcoatb"

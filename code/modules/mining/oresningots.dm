@@ -150,7 +150,7 @@
 	icon_state = "adamantine_ingot"
 	w_class = ITEM_SIZE_NORMAL
 	drop_sound = 'sound/items/metaldrop.ogg'
-	sales_price = 30
+	sales_price = 25
 
 /obj/item/ingots/goldingot
 	name = "gold ingot"
@@ -358,7 +358,7 @@
 	sales_price = 10
 
 /obj/item/newore/gems/diamond
-	name = "chunk of diamond"
+	name = "chunk of strange gem"
 	desc = "A chunk of diamond"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "diamond"
@@ -369,7 +369,7 @@
 	sales_price = 18
 
 /obj/item/newore/gems/diamond/cut
-	name = "cut diamond"
+	name = "cut strange gem"
 	desc = "A finely cut diamond"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "diamond_cut"
@@ -379,7 +379,7 @@
 	sales_price = 24
 
 /obj/item/newore/gems/diamond/fail
-	name = "damaged diamond"
+	name = "damaged strange gem"
 	desc = "The carver of this diamond messed up!"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "diamond_fail"
@@ -823,10 +823,10 @@
 */
 
 /obj/item/newore/gems/attackby(obj/item/device/W as obj, mob/user as mob)
-	if(!isAutochisel(W) && !isLasercutter(W))
-		to_chat(user, "Use an auto-chisel to try and carve out the gem!")
+	if(!isAutochisel(W) && !isChisel(W) && !isLasercutter(W))
+		to_chat(user, "Use a chisel to try and carve out the gem!")
 		return
-	if(isAutochisel(W))
+	if(isAutochisel(W) || isChisel(W)) // Made it so normal chisel can cut gems to allow heritics to mine for them and not have to only get them from the mechnboys.
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 		switch(gemtype)

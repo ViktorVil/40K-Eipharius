@@ -42,21 +42,21 @@
 
 /datum/rune_recipe/nurgle/nade
 	name = "Nade Rite"
-	ingredients = list(/obj/item/reagent_containers/food/snacks/meat, /obj/item/reagent_containers/food/snacks/egg,)
+	ingredients = list(/obj/item/reagent_containers/food/snacks/meat, /obj/item/reagent_containers/food/snacks/egg)
 	product_path = /obj/item/grenade/spawnergrenade/bugs
 
 /datum/rune_recipe/nurgle/blight
 	name = "Blightnade Rite"
-	ingredients = list(/obj/item/organ/external/head, /obj/item/grenade/frag/high_yield/homemade)
+	ingredients = list(/obj/item/grenade/frag/high_yield/krak, /obj/item/organ/external/head, /obj/item/organ/internal/liver)
 	product_path = /obj/item/grenade/chem_grenade/blightnade
 
 /datum/rune_recipe/nurgle/nurgling
 	name = "Nurgling Rite"
-	ingredients = list(/obj/item/organ/internal/liver)
+	ingredients = list(/obj/item/organ/internal/appendix)
 	product_path = /mob/living/simple_animal/hostile/nurgling
 
 /datum/rune_recipe/nurgle/offering
 	name = "Offering Rite"
-	ingredients = list(/mob/living/carbon/human)
+	ingredients = list(/obj/item/newore/gems/emerald)
 	delete_items = FALSE
 	special 	 = TRUE

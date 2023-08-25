@@ -427,7 +427,7 @@ var/const/NO_EMAG_ACT = -50
 	SetName(final_name)
 
 /obj/item/card/id/civilian/confessor
-	job_access_type = /datum/job/confessor
+	job_access_type = /datum/job/deacon
 
 /obj/item/card/id/pilgrim/penitent
 	access = list(access_village)
@@ -503,7 +503,7 @@ var/const/NO_EMAG_ACT = -50
 /obj/item/card/id/dog_tag/kroot
 	icon_state = "tagred"
 	access = list(access_kroot)
-	sales_price = 30
+	sales_price = 15
 
 
 /obj/item/card/id/dog_tag/skitarii
@@ -520,7 +520,7 @@ var/const/NO_EMAG_ACT = -50
 	icon_state = "tau"
 	access = list(access_tau)
 	desc = "An ornate ring forged by Tau craftsmen. Functions like an ID."
-	sales_price = 40
+	sales_price = 20
 
 
 /obj/item/card/id/ring/administrator
@@ -532,7 +532,7 @@ var/const/NO_EMAG_ACT = -50
 	name = "golden ring"
 	icon_state = "goldring"
 	desc = "A simple golden ring, can be combined with gems for some BLING BLING!"
-	sales_price = 30
+	sales_price = 20
 
 /obj/item/card/id/ring/disgracedmedicae
 	name = "access card"

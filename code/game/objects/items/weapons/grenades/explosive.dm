@@ -1,5 +1,5 @@
 /obj/item/projectile/bullet/pellet/fragment
-	damage = 60
+	damage = 55
 	range_step = 3 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 
 	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone
@@ -17,7 +17,7 @@
 	range = 5
 
 /obj/item/projectile/bullet/pellet/fragment/weak
-	damage = 60
+	damage = 50
 	range_step = 3
 
 /obj/item/grenade/frag
@@ -185,7 +185,7 @@ obj/mortar/flare/blue
 	desc = "Larger and heavier than a standard fragmentation grenade, this device is extremely dangerous. It cannot be thrown as far because of its weight."
 	icon_state = "frag"
 
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 	throw_speed = 2
 	throw_range = 6 //heavy, can't be thrown as far
 
@@ -200,6 +200,16 @@ obj/mortar/flare/blue
 	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/strong=1)
 	explosion_size = 4
 	num_fragments = 4
+	w_class = ITEM_SIZE_SMALL
+
+/obj/item/grenade/frag/high_yield/krak2
+	name = "Mechanicus Krak Grenade"
+	desc = "A potent anti armor grenade used by the Imperium of Man, mind the blast radius."
+	icon_state = "krak_grenade"
+	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/strong=1)
+	explosion_size = 5
+	num_fragments = 6
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/grenade/frag/high_yield/homemade
 	name = "Pipe Grenade"
@@ -210,6 +220,7 @@ obj/mortar/flare/blue
 	num_fragments = 3
 	throw_speed = 1.5
 	throw_range = 8
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/grenade/frag/high_yield/krak/prime()
 	update_mob()

@@ -18,17 +18,50 @@
 	heavy_effect_range = 0
 	light_effect_range = 1
 
-/obj/item/projectile/bullet/bolterrifle
-	name ="explosive bolt"
+/obj/item/projectile/bullet/bolterrifle 
+	name =".75 bolt" //.75, astartes sized bolters or boltpistols
 	icon_state= "bolter"
-	damage = 50
+	damage = 70
+	armor_penetration = 30 //this is totally not cause its a .75
 	check_armour = "bullet"
-	sharp = 1
-	edge = 1
 
-	on_hit(var/atom/target, var/blocked = 0)
+/obj/item/projectile/bullet/bpistol 
+	name =".50 bolt" //.50, human sized bolters and bolt pistols
+	icon_state= "bolter"
+	damage = 60
+	check_armour = "bullet"
+	armor_penetration = 25
+
+// SPECIAL BOLT ROUNDS
+
+/obj/item/projectile/bullet/bpistol/kp
+	fire_sound = 'sound/effects/explosion1.ogg'
+	damage = 65
+	armor_penetration = 40
+	penetrating = 2
+
+/obj/item/projectile/bullet/bolt/kp
+	fire_sound = 'sound/effects/explosion1.ogg'
+	damage = 78
+	armor_penetration = 55
+	penetrating = 3
+
+/obj/item/projectile/bullet/bpistol/ms // This is .75 Bolt Pistol Round
+	fire_sound = 'sound/effects/explosion1.ogg'
+	damage = 40
+	armor_penetration = 25
+/obj/item/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
+	if(isturf(target))
 		explosion(target, -1, 0, 2)
-		return 1
+	..()
+
+/obj/item/projectile/bullet/bolt/ms
+	fire_sound = 'sound/effects/explosion1.ogg'
+	damage = 50
+	armor_penetration = 30
+/obj/item/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
+	if(isturf(target))
+		explosion(target, -1, 0, 2)
 
 /obj/item/projectile/meteor
 	name = "meteor"
@@ -129,7 +162,7 @@
 		if (ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if (prob (33))
-				playsound(loc, "stab_sound", 50, TRUE)
+				playsound(loc, "stab_sound", 60, TRUE)
 				var/obj/item/organ/external/affecting = H.get_organ(pick("l_foot", "r_foot", "l_leg", "r_leg"))
 				if (affecting.status & ORGAN_ROBOT)
 					return
@@ -138,7 +171,7 @@
 				H.updatehealth()
 				to_chat(H, "<span class = 'red'><b>Your [affecting.name] gets bitten by \the [src]!</b></span>")
 			else if (prob (33))
-				playsound(loc, "stab_sound", 50, TRUE)
+				playsound(loc, "stab_sound", 80, TRUE)
 				var/obj/item/organ/external/affecting = H.get_organ(pick("l_foot", "r_foot", "l_leg", "r_leg"))
 				if (affecting.status & ORGAN_ROBOT)
 					return
@@ -147,7 +180,7 @@
 				H.updatehealth()
 				to_chat(H, "<span class = 'red'><b>Your [affecting.name] gets bitten by \the [src]!</b></span>")
 			else
-				playsound(loc, "stab_sound", 50, TRUE)
+				playsound(loc, "stab_sound", 100, TRUE)
 				var/obj/item/organ/external/affecting = H.get_organ(pick("l_foot", "r_foot", "l_leg", "r_leg"))
 				if (affecting.status & ORGAN_ROBOT)
 					return
@@ -161,14 +194,14 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if (ishuman(M))
-			if(prob(25))
+			if(prob(75))
 				M.visible_message("<span class='danger'>[M] struggle to free themselves from the barbed teeth!</span>")
 				var/mob/living/carbon/human/H = M
 				playsound(loc, "stab_sound", 50, TRUE)
 				var/obj/item/organ/external/affecting = H.get_organ(pick("l_foot", "r_foot", "l_leg", "r_leg"))
 				if (affecting.status & ORGAN_ROBOT)
 					return
-				if (affecting.take_damage(18, FALSE))
+				if (affecting.take_damage(8, FALSE))
 					H.UpdateDamageIcon()
 				H.updatehealth()
 				return FALSE
@@ -177,8 +210,77 @@
 				return TRUE
 	return ..()
 
-/// FLAMER FIRE
+// FLOWER
+/*
+/obj/fleshkitten
+	name = "flesh thing"
+	desc = "..."
+	anchored = 1
+	mouse_opacity = 0
+	icon = 'icons/cadia-sprites/migrated2/things2.dmi
+	icon_state = "kitten"
+	layer = ABOVE_OBJECT_LAYER
+	density = 1
+	var/health = 100
+	var/maxhealth = 100
 
+/obj/fleshpole/attackby(obj/item/W as obj, mob/user as mob)
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		switch(W.damtype)
+			if("fire")
+				src.health -= W.force * 1
+			if("brute")
+				src.health -= W.force * 0.75
+			else
+		if (src.health <= 10)
+			visible_message("<span class='danger'>The flesh thing dies!</span>")
+			density = 0
+			icon_state = "dead_kitten"
+			qdel(src)
+			return
+		..()
+	
+
+	if(icon_state = "dead_kitten")
+
+/obj/fleshkitten/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
+	if(istype(M))
+		if(istype(H.wear_suit, /obj/item/clothing/suit/fire) || istype(H.wear_suit, /obj/item/clothing/suit/armor/astartes) || istype(H.wear_suit, /obj/item/clothing/suit/sisterofbattle) || istype(H.wear_suit, /obj/item/clothing/suit/armor/ordohereticus))
+				H.show_message(text("Your suit protects you from the flesh tendrils."),1)
+				return
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if (prob (80))
+				playsound(loc, "sound/effects/gore/severed.ogg", 100, TRUE)
+				var/obj/item/organ/external/affecting = H.get_organ(pick("l_foot", "r_foot", "l_leg", "r_leg"))
+				if (affecting.status & ORGAN_ROBOT)
+					return
+				if (affecting.take_damage(4, FALSE))
+					H.UpdateDamageIcon()
+				H.updatehealth()
+				to_chat(H, "<span class = 'red'><b>Your [affecting.name] gets bitten by \the [src]!</b></span>")
+		
+/obj/fleshkitten/Uncross(AM as mob)
+	if(ismob(AM))
+		var/mob/M = AM
+		if (ishuman(M))
+			if(prob(95))
+				M.visible_message("<span class='danger'>[M] struggle to free themselves from the barbed teeth!</span>")
+				var/mob/living/carbon/human/H = M
+				playsound(loc, "sound/effects/gore/severed.ogg", 50, TRUE)
+				var/obj/item/organ/external/affecting = H.get_organ(pick("l_foot", "r_foot", "l_leg", "r_leg"))
+				if (affecting.status & ORGAN_ROBOT)
+					return
+				if (affecting.take_damage(4, FALSE))
+					H.UpdateDamageIcon()
+				H.updatehealth()
+				return FALSE
+			else
+				M.visible_message("<span class='danger'>[M] frees themself from the tendrils!</span>")
+				return TRUE
+	return ..()
+// make code for someone helping you out and for kitten being dead.
+*/
 /// FLAMER FIRE
 
 /obj/flamer_fire
@@ -189,7 +291,7 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "red_2"
 	layer = BELOW_OBJ_LAYER
-	var/firelevel = 4 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
+	var/firelevel = 1 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_color = "red"
 	var/canSpreadDir = NORTH | SOUTH | EAST | WEST
@@ -287,15 +389,20 @@
 	firelevel -= 2 //reduce the intensity by 2 per tick
 	return
 
+
+
+
 //this is the PHOSPHOR energy gun, its really fucking OP in lore because it burns through almost anything until they are dead, im not sure why the pain is so huge tho.
 /obj/item/projectile/energy/phosphor
-	name = "phosphor bolt"
+	name = "phosphor splash"
 	icon_state = "pulse1"
 	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
-	damage = 25
-	agony = 200 //this is pain that passes through armor???
-	range =  15
-
+	damage = 65 //phosphor blasters are incredibly powerful weapons, almost never used
+	check_armour = "energy"
+	armor_penetration = 100 //phosphor blasters are incredibly good at penetrating heavy armor
+	range =  6 //extremely close ranged, normal vision is 8 but technically 7 if you don't count your own tile.
+	
+/*
 /obj/item/projectile/energy/phosphor/on_hit(var/atom/target, var/blocked = 0)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
@@ -306,6 +413,7 @@
 		if(H.isChild())
 			var/mob/living/carbon/human/F = firer
 			F.unlock_achievement(new/datum/achievement/child_fire())
+*/
 
 /obj/item/projectile/gauss
 	name = "Gauss "

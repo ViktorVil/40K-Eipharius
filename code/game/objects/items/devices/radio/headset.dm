@@ -2,8 +2,8 @@
 	name = "radio headset"
 	desc = "An updated, modular intercom that fits over the head. Takes encryption keys."
 	var/radio_desc = ""
-	icon_state = "headset"
-	item_state = "headset"
+	icon_state = "sec_headset"
+	item_state = "sec_headset"
 	matter = list(DEFAULT_WALL_MATERIAL = 75)
 	subspace_transmission = 1
 	canhear_range = 0 // can't hear headsets from very far away
@@ -219,14 +219,14 @@
 	ks1type = /obj/item/device/encryptionkey/red
 	ks2type = /obj/item/device/encryptionkey/heads/hop
 
-//unused rn
+//MAGISTRATUM
 /obj/item/device/radio/headset/headset_cargo
-	name = "supply radio headset"
+	name = "enforcer radio headset"
 	desc = "A headset used by the box pushers."
 	icon_state = "cargo_headset"
 	item_state = "headset"
-	ks1type = /obj/item/device/encryptionkey/red
-	ks2type = /obj/item/device/encryptionkey/headset_cargo
+	ks1type = /obj/item/device/encryptionkey/headset_sci
+	ks2type = /obj/item/device/encryptionkey/red_alpha
 
 //basic 'common' vox
 /obj/item/device/radio/headset/headset_service
@@ -244,8 +244,8 @@
 	icon = 'icons/obj/radio.dmi'
 	name = "Marshal vox"
 	desc = "A stripped down version of the standard Guard issue vox. This one has been upgraded with a com-link"
-	ks1type = /obj/item/device/encryptionkey/headset_sec
-	ks2type = /obj/item/device/encryptionkey/headset_com
+	ks1type = /obj/item/device/encryptionkey/headset_sci
+	ks2type = /obj/item/device/encryptionkey/headset_sec
 	icon_state = "sec_headset"
 	item_state = "sec_headset"
 	slot_flags = SLOT_EARS
@@ -286,8 +286,8 @@
 /obj/item/device/radio/headset/tau
 	name = "tau headset"
 	desc = "The headset of the greater good."
-	icon_state = "tau_headset"
-	item_state = "t_headset"
+	icon_state = "sec_headset"
+	item_state = "sec_headset"
 	ks2type = null //until there is a tau channel
 
 /obj/item/device/radio/headset/fire_warrior
@@ -470,7 +470,7 @@
 	syndie = 1
 
 /obj/item/device/radio/headset/inquisition
-	name = "Vox Headset"
+	name = "Standard Issue Vox"
 	origin_tech = list(TECH_ILLEGAL = 2)
 	syndie = 1
 	ks1type = /obj/item/device/encryptionkey/inq

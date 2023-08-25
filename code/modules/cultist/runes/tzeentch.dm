@@ -60,8 +60,8 @@
 
 /datum/rune_recipe/tzeentch/skinless
 	name = "Skinless Rite"
-	ingredients = list(/obj/item/reagent_containers/food/snacks/poo, /obj/item/flame/candle)
-	product_path = /mob/living/carbon/human/skinless
+	ingredients = list(/mob/living/carbon/human, /obj/item/flame/candle)
+	product_path = /mob/living/carbon/human
 
 /datum/rune_recipe/tzeentch/transmutation
 	name = "Transmutation Rite"
@@ -82,10 +82,15 @@
 /datum/rune_recipe/tzeentch/coppercoin
 	name = "Copper to Coin"
 	ingredients = list(/obj/item/stack/thrones)
-	product_path = list(/obj/item/stack/thrones, /obj/item/stack/thrones)
+	product_path = list(/obj/item/reagent_containers/food/snacks/poo)
 
 /datum/rune_recipe/tzeentch/lens
 	name = "Lensmaker's Rite"
 	ingredients = list(/obj/item/cell/lasgun)
 	product_path =  (/obj/item/gun/energy/WarpLens)
+
+/datum/rune_recipe/tzeentch/tzbook
+	name = "Rite of the Mindshatterer"
+	ingredients = list(/obj/item/book/manual)
+	product_path = (/obj/item/melee/Tzbook)
 

@@ -6,7 +6,7 @@
 	load_method = MAGAZINE
 	max_shells = 20
 	caliber = "9mm"
-	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
+	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
 	slot_flags = SLOT_BELT | SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/c9mm
 	automatic = 1
@@ -41,13 +41,20 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	burst_delay = 1
 	automatic = 1
-	accuracy = -1
+	accuracy = 0
 	force = 8
 	fire_delay = 1
 	sales_price = 10
 
 	magazine_type = /obj/item/ammo_magazine/smgmc9mm
 	allowed_magazines = /obj/item/ammo_magazine/smgmc9mm
+
+/obj/item/gun/projectile/automatic/smg/boscelot/update_icon()
+    ..()
+    if(ammo_magazine)
+        icon_state = "sten"
+    else
+        icon_state = "sten-e"
 /*
 /obj/item/gun/projectile/automatic/smg/villiers // valhallan
 	name = "Villiers Pattern Stub SMG"
